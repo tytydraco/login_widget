@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/widgets/login_field_widget.dart';
+import 'package:login_widget/widgets/login_field_form_widget.dart';
 
 /// The root login widget to display
 class LoginWidget extends StatefulWidget {
-  final List<LoginFieldWidget> loginFields;
+  final LoginFieldFormWidget form;
+  final String loginButtonText;
 
   const LoginWidget({
     Key? key,
-    required this.loginFields
+    required this.form,
+    required this.loginButtonText,
   }) : super(key: key);
 
   @override
@@ -15,8 +17,21 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  void _submitLoginInfo() {
+    widget.form.formKey.currentState!.validate();
+    // TODO: uhh
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        widget.form,
+        ElevatedButton(
+          onPressed: _submitLoginInfo,
+          child: Text(widget.loginButtonText),
+        ),
+      ],
+    );
   }
 }
