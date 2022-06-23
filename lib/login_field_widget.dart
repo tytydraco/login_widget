@@ -31,6 +31,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
         controller: widget.controller,
         decoration: InputDecoration(
           hintText: widget.hintText,
+          border: const OutlineInputBorder(),
         ),
         obscureText: widget.obscureText,
         validator: (input) {
