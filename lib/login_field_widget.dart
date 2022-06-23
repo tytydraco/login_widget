@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/widgets/login_widget.dart';
+import 'package:login_widget/login_widget.dart';
 
 /// Single text field for use with [LoginWidget]
 class LoginFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
-  
+
   const LoginFieldWidget({
     Key? key,
     required this.controller,

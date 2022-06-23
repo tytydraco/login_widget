@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/widgets/login_field_form_widget.dart';
+import 'package:login_widget/login_field_form_widget.dart';
 
 /// The root login widget to display
 class LoginWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/widgets/login_field_widget.dart';
+import 'package:login_widget/login_field_widget.dart';
 
 /// Container to handle a list of [LoginFieldWidget]
 class LoginFieldFormWidget extends StatefulWidget {
