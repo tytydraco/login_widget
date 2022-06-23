@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Add autofocus option to fields
+* Reorder a few widget parameters
+
 ## 0.0.2
 
 * Add hook for log in button long-press action
