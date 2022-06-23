@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Use `String? Function(String?)?` style input validators
+
 ## 0.0.3
 
 * Add autofocus option to fields
