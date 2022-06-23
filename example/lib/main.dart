@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/login_field_form_widget.dart';
+import 'package:login_widget/login_form_widget.dart';
 import 'package:login_widget/generic_login_field_validator.dart';
 import 'package:login_widget/login_field_widget.dart';
 import 'package:login_widget/login_widget.dart';
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 300),
           child: LoginWidget(
-            form: LoginFieldFormWidget(
+            form: LoginFormWidget(
               formKey: formKey,
               loginFields: [
                 LoginFieldWidget(
