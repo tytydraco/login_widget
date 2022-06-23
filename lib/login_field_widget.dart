@@ -5,17 +5,17 @@ import 'package:login_widget/login_widget.dart';
 /// Single text field for use with [LoginWidget]
 class LoginFieldWidget extends StatefulWidget {
   final TextEditingController controller;
+  final LoginFieldValidatorImplementation? loginFieldValidator;
   final String hintText;
   final bool obscureText;
-  final LoginFieldValidatorImplementation? loginFieldValidator;
   final bool autofocus;
 
   const LoginFieldWidget({
     Key? key,
     required this.controller,
+    this.loginFieldValidator,
     this.hintText = '',
     this.obscureText = false,
-    this.loginFieldValidator,
     this.autofocus = false,
   }) : super(key: key);
 
