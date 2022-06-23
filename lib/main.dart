@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_widget/widgets/login_field_form_widget.dart';
+import 'package:login_widget/widgets/login_field_widget.dart';
+import 'package:login_widget/widgets/login_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +32,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final formKey = GlobalKey<FormState>();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +43,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(),
+        child: LoginWidget(
+          form: LoginFieldFormWidget(
+            formKey: formKey,
+            loginFields: [
+              LoginFieldWidget(
+                controller: usernameController,
+                hintText: 'Username',
+                obscureText: false,
+              ),
+              LoginFieldWidget(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+            ],
+          ),
+          loginButtonText: 'Log in',
+        ),
       ),
     );
   }
