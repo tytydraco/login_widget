@@ -36,7 +36,10 @@ class _LoginWidgetState extends State<LoginWidget> {
           padding: const EdgeInsets.all(8),
           child: ElevatedButton(
             onPressed: _submitLoginInfo,
-            child: Text(widget.loginButtonText),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Text(widget.loginButtonText)
+            ),
           ),
         ),
       ],
