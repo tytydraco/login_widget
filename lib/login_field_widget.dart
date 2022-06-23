@@ -34,6 +34,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
           border: const OutlineInputBorder(),
         ),
         obscureText: widget.obscureText,
+        textInputAction: TextInputAction.next,
         validator: (input) {
           if (input == null) {
             return 'Invalid';
