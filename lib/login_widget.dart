@@ -27,19 +27,19 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          widget.form,
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: ElevatedButton(
-              onPressed: _submitLoginInfo,
-              child: Text(widget.loginButtonText),
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        widget.form,
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: ElevatedButton(
+            onPressed: _submitLoginInfo,
+            child: Text(widget.loginButtonText),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
