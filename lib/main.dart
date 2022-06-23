@@ -43,28 +43,31 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: LoginWidget(
-          form: LoginFieldFormWidget(
-            formKey: formKey,
-            loginFields: [
-              LoginFieldWidget(
-                controller: usernameController,
-                hintText: 'Username',
-                obscureText: false,
-              ),
-              LoginFieldWidget(
-                controller: passwordController,
-                hintText: 'Password',
-                obscureText: true,
-              ),
-            ],
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 300),
+          child: LoginWidget(
+            form: LoginFieldFormWidget(
+              formKey: formKey,
+              loginFields: [
+                LoginFieldWidget(
+                  controller: usernameController,
+                  hintText: 'Username',
+                  obscureText: false,
+                ),
+                LoginFieldWidget(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
+                ),
+              ],
+            ),
+            loginButtonText: 'Log in',
+            onSubmit: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Logged in'))
+              );
+            },
           ),
-          loginButtonText: 'Log in',
-          onSubmit: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Logged in'))
-            );
-          },
         ),
       ),
     );
