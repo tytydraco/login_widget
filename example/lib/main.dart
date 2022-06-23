@@ -53,7 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 LoginFieldWidget(
                   controller: usernameController,
                   hintText: 'Username',
-                  obscureText: false,
                   loginFieldValidator: GenericLoginFieldValidator(),
                 ),
                 LoginFieldWidget(
@@ -66,9 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             loginButtonText: 'Log in',
             onSubmit: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Logged in'))
-              );
+              final text = '${usernameController.text} : ${passwordController.text}';
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
             },
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:login_widget/login_field_validator_implementation.dart';
 
+/// A generic, common-use login field validator
 class GenericLoginFieldValidator implements LoginFieldValidatorImplementation {
   final int maxLength;
   final int minLength;

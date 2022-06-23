@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/generic_login_field_validator.dart';
 import 'package:login_widget/login_field_validator_implementation.dart';
 import 'package:login_widget/login_widget.dart';
 
