@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login_widget/login_form_widget.dart';
-import 'package:login_widget/generic_login_field_validator.dart';
 import 'package:login_widget/login_field_widget.dart';
 import 'package:login_widget/login_widget.dart';
 
@@ -37,6 +36,17 @@ class _MyHomePageState extends State<MyHomePage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
+  String? genericValidator(String? input) {
+    if (input == null) {
+      return 'Invalid';
+    } else if (input == '') {
+      return 'Cannot be empty';
+    } else if (input.length > 256) {
+      return 'Too long';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,13 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 LoginFieldWidget(
                   controller: usernameController,
                   hintText: 'Username',
-                  loginFieldValidator: GenericLoginFieldValidator(),
+                  validator: genericValidator,
                 ),
                 LoginFieldWidget(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
-                  loginFieldValidator: GenericLoginFieldValidator(),
+                  validator: genericValidator,
                 ),
               ],
             ),

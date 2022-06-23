@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/login_field_validator_implementation.dart';
 import 'package:login_widget/login_widget.dart';
 
 /// Single text field for use with [LoginWidget]
 class LoginFieldWidget extends StatefulWidget {
   final TextEditingController controller;
-  final LoginFieldValidatorImplementation? loginFieldValidator;
+  final String? Function(String?)? validator;
   final String hintText;
   final bool obscureText;
   final bool autofocus;
@@ -13,7 +12,7 @@ class LoginFieldWidget extends StatefulWidget {
   const LoginFieldWidget({
     Key? key,
     required this.controller,
-    this.loginFieldValidator,
+    this.validator,
     this.hintText = '',
     this.obscureText = false,
     this.autofocus = false,
@@ -37,7 +36,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
         ),
         obscureText: widget.obscureText,
         textInputAction: TextInputAction.next,
-        validator: widget.loginFieldValidator?.validate,
+        validator: widget.validator
       ),
     );
   }
