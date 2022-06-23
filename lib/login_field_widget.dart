@@ -8,6 +8,7 @@ class LoginFieldWidget extends StatefulWidget {
   final String hintText;
   final bool obscureText;
   final LoginFieldValidatorImplementation? loginFieldValidator;
+  final bool autofocus;
 
   const LoginFieldWidget({
     Key? key,
@@ -15,6 +16,7 @@ class LoginFieldWidget extends StatefulWidget {
     this.hintText = '',
     this.obscureText = false,
     this.loginFieldValidator,
+    this.autofocus = false,
   }) : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
       child: TextFormField(
+        autofocus: widget.autofocus,
         controller: widget.controller,
         decoration: InputDecoration(
           hintText: widget.hintText,
