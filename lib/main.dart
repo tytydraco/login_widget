@@ -60,6 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           loginButtonText: 'Log in',
+          onSubmit: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Logged in'))
+            );
+          },
         ),
       ),
     );

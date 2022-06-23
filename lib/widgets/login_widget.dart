@@ -5,11 +5,13 @@ import 'package:login_widget/widgets/login_field_form_widget.dart';
 class LoginWidget extends StatefulWidget {
   final LoginFieldFormWidget form;
   final String loginButtonText;
+  final Function onSubmit;
 
   const LoginWidget({
     Key? key,
     required this.form,
     required this.loginButtonText,
+    required this.onSubmit,
   }) : super(key: key);
 
   @override
@@ -18,8 +20,9 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   void _submitLoginInfo() {
-    widget.form.formKey.currentState!.validate();
-    // TODO: uhh
+    if (widget.form.formKey.currentState!.validate()) {
+      widget.onSubmit();
+    }
   }
 
   @override
