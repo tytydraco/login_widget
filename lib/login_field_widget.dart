@@ -25,22 +25,25 @@ class LoginFieldWidget extends StatefulWidget {
 class _LoginFieldWidgetState extends State<LoginFieldWidget> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      decoration: InputDecoration(
-        hintText: widget.hintText,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+      child: TextFormField(
+        controller: widget.controller,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+        ),
+        obscureText: widget.obscureText,
+        validator: (input) {
+          if (input == null) {
+            return 'Invalid';
+          } else if (!widget.allowEmpty && input == '') {
+            return 'Cannot be empty';
+          } else if (input.length > widget.maxLength) {
+            return 'Too long';
+          }
+          return null;
+        },
       ),
-      obscureText: widget.obscureText,
-      validator: (input) {
-        if (input == null) {
-          return 'Invalid';
-        } else if (!widget.allowEmpty && input == '') {
-          return 'Cannot be empty';
-        } else if (input.length > widget.maxLength) {
-          return 'Too long';
-        }
-        return null;
-      },
     );
   }
 }

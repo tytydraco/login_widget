@@ -30,9 +30,12 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Column(
       children: [
         widget.form,
-        ElevatedButton(
-          onPressed: _submitLoginInfo,
-          child: Text(widget.loginButtonText),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: ElevatedButton(
+            onPressed: _submitLoginInfo,
+            child: Text(widget.loginButtonText),
+          ),
         ),
       ],
     );
