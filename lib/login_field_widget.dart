@@ -6,12 +6,16 @@ class LoginFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final int maxLength;
+  final bool allowEmpty;
 
   const LoginFieldWidget({
     Key? key,
     required this.controller,
-    required this.hintText,
-    required this.obscureText,
+    this.hintText = '',
+    this.obscureText = false,
+    this.maxLength = 256,
+    this.allowEmpty = false,
   }) : super(key: key);
 
   @override
@@ -27,6 +31,16 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
         hintText: widget.hintText,
       ),
       obscureText: widget.obscureText,
+      validator: (input) {
+        if (input == null) {
+          return 'Invalid';
+        } else if (!widget.allowEmpty && input == '') {
+          return 'Cannot be empty';
+        } else if (input.length > widget.maxLength) {
+          return 'Too long';
+        }
+        return null;
+      },
     );
   }
 }
