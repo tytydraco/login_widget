@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_widget/login_field_form_widget.dart';
+import 'package:login_widget/generic_login_field_validator.dart';
 import 'package:login_widget/login_field_widget.dart';
 import 'package:login_widget/login_widget.dart';
 
@@ -53,11 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: usernameController,
                   hintText: 'Username',
                   obscureText: false,
+                  loginFieldValidator: GenericLoginFieldValidator(),
                 ),
                 LoginFieldWidget(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
+                  loginFieldValidator: GenericLoginFieldValidator(),
                 ),
               ],
             ),

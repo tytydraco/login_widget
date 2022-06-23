@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login_widget/generic_login_field_validator.dart';
+import 'package:login_widget/login_field_validator_implementation.dart';
 import 'package:login_widget/login_widget.dart';
 
 /// Single text field for use with [LoginWidget]
@@ -6,16 +8,14 @@ class LoginFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
-  final int maxLength;
-  final bool allowEmpty;
+  final LoginFieldValidatorImplementation? loginFieldValidator;
 
   const LoginFieldWidget({
     Key? key,
     required this.controller,
     this.hintText = '',
     this.obscureText = false,
-    this.maxLength = 256,
-    this.allowEmpty = false,
+    this.loginFieldValidator,
   }) : super(key: key);
 
   @override
@@ -35,16 +35,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
         ),
         obscureText: widget.obscureText,
         textInputAction: TextInputAction.next,
-        validator: (input) {
-          if (input == null) {
-            return 'Invalid';
-          } else if (!widget.allowEmpty && input == '') {
-            return 'Cannot be empty';
-          } else if (input.length > widget.maxLength) {
-            return 'Too long';
-          }
-          return null;
-        },
+        validator: widget.loginFieldValidator?.validate,
       ),
     );
   }
