@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Fix repo URL
+
 ## 0.0.4
 
 * Use `String? Function(String?)?` style input validators
