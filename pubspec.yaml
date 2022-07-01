@@ -1,6 +1,6 @@
 name: login_widget
 description: A portable and lightweight login widget
-version: 0.0.5
+version: 0.0.6
 repository: https://www.github.com/tytydraco/flutter_login_widget
 
 environment:

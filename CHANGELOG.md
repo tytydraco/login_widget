@@ -1,3 +1,9 @@
+## 0.0.6
+
+* Add loading indicator support while awaiting callbacks
+* Convert callbacks to async functions
+* Document code better
+
 ## 0.0.5
 
 * Fix repo URL
