@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:login_widget/login_form_widget.dart';
 
-/// The root login widget to display
+/// The root login widget to display.
 class LoginWidget extends StatefulWidget {
+  /// A [LoginFormWidget] which holds all of the login fields.
   final LoginFormWidget form;
+  /// The text to display on the login button.
   final String loginButtonText;
+  /// Gets called when the user presses submit.
   final Future Function() onSubmit;
+  /// Gets called when the user long presses on the submit button.
   final Future Function()? onLongPress;
+  /// Shows a indefinite circular spinner awaiting [onSubmit] or [onLongPress].
   final bool showLoadingSpinner;
 
   const LoginWidget({
@@ -25,12 +30,16 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   bool isLoading = false;
 
+  /// Sets the loading status if it is supported to [value].
+  ///
+  /// Also refreshes the state if applicable.
   void setLoadingState(bool value) {
     if (widget.showLoadingSpinner) {
       setState(() => isLoading = value);
     }
   }
 
+  /// If the input is valid, report a login attempt.
   void submitLoginInfo() async {
     if (widget.form.formKey.currentState!.validate()) {
       setLoadingState(true);
@@ -39,6 +48,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
   }
 
+  /// If the input is valid, report a long press attempt.
   void submitLoginInfoLongPress() async {
     if (widget.onLongPress == null) {
       return;

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:login_widget/login_widget.dart';
 
-/// Single text field for use with [LoginWidget]
+/// Single text field for use with [LoginWidget].
 class LoginFieldWidget extends StatefulWidget {
+  /// The [TextEditingController] to assign this field to.
   final TextEditingController controller;
-  final String? Function(String?)? validator;
+  /// An optional function to check whether the input string is valid or not.
+  ///
+  /// Should return the error message, or null if the input is accepted.
+  final String? Function(String? input)? validator;
+  /// The hint text to show when no input is given.
   final String hintText;
+  /// Hides the input from the user.
   final bool obscureText;
+  /// Automatically focus on this element when the widget is rendered.
   final bool autofocus;
 
   const LoginFieldWidget({
