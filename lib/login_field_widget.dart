@@ -8,7 +8,7 @@ class LoginFieldWidget extends StatefulWidget {
 
   /// An optional function to check whether the input string is valid or not.
   ///
-  /// Should return the error message, or null if the input is accepted.
+  /// Should return an error message, or null if the input is accepted.
   final String? Function(String? input)? validator;
 
   /// The hint text to show when no input is given.

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:login_widget/login_error_message.dart';
 import 'package:login_widget/login_form_widget.dart';
 
 /// The root login widget to display.
@@ -10,10 +13,14 @@ class LoginWidget extends StatefulWidget {
   final String loginButtonText;
 
   /// Gets called when the user presses submit.
-  final Future Function() onSubmit;
+  ///
+  /// Returns an error message, if applicable.
+  final FutureOr<String?> Function() onSubmit;
 
   /// Gets called when the user long presses on the submit button.
-  final Future Function()? onLongPress;
+  ///
+  /// Returns an error message, if applicable.
+  final FutureOr<String?> Function()? onLongPress;
 
   /// Shows a indefinite circular spinner awaiting [onSubmit] or [onLongPress].
   final bool showLoadingSpinner;
@@ -33,6 +40,7 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   bool isLoading = false;
+  String? errorMessage;
 
   /// Sets the loading status if it is supported to [value].
   ///
@@ -43,25 +51,45 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
   }
 
+  /// Sets the error message if it has changed.
+  ///
+  /// Also refreshes the state.
+  void setErrorMessage(String? message) {
+    if (errorMessage != message) {
+      setState(() => errorMessage = message);
+    }
+  }
+
+  /// Clears the error message.
+  ///
+  /// Also refreshes the state.
+  void clearErrorMessage() => setErrorMessage(null);
+
   /// If the input is valid, report a login attempt.
   void submitLoginInfo() async {
+    clearErrorMessage();
+
     if (widget.form.formKey.currentState!.validate()) {
       setLoadingState(true);
-      await widget.onSubmit();
+      final newErrorMessage = await widget.onSubmit();
       setLoadingState(false);
+      setErrorMessage(newErrorMessage);
     }
   }
 
   /// If the input is valid, report a long press attempt.
   void submitLoginInfoLongPress() async {
+    clearErrorMessage();
+
     if (widget.onLongPress == null) {
       return;
     }
 
     if (widget.form.formKey.currentState!.validate()) {
       setLoadingState(true);
-      await widget.onLongPress!();
+      final newErrorMessage = await widget.onLongPress!();
       setLoadingState(false);
+      setErrorMessage(newErrorMessage);
     }
   }
 
@@ -72,6 +100,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          LoginErrorMessage(message: errorMessage),
           widget.form,
           Padding(
             padding: const EdgeInsets.all(8),
