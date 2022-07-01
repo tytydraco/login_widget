@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Add error message support by returning String from callbacks
+
 ## 0.0.6
 
 * Add loading indicator support while awaiting callbacks
