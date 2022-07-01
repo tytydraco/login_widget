@@ -37,7 +37,7 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: TextFormField(
           autofocus: widget.autofocus,
           controller: widget.controller,
