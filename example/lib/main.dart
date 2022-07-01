@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             loginButtonText: 'Log in',
-            onSubmit: () {
+            onSubmit: () async {
               final text = '${usernameController.text} : ${passwordController.text}';
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
             },
