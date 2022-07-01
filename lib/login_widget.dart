@@ -5,12 +5,16 @@ import 'package:login_widget/login_form_widget.dart';
 class LoginWidget extends StatefulWidget {
   /// A [LoginFormWidget] which holds all of the login fields.
   final LoginFormWidget form;
+
   /// The text to display on the login button.
   final String loginButtonText;
+
   /// Gets called when the user presses submit.
   final Future Function() onSubmit;
+
   /// Gets called when the user long presses on the submit button.
   final Future Function()? onLongPress;
+
   /// Shows a indefinite circular spinner awaiting [onSubmit] or [onLongPress].
   final bool showLoadingSpinner;
 
@@ -75,9 +79,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               onPressed: submitLoginInfo,
               onLongPress: widget.onLongPress,
               child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(widget.loginButtonText)
-              ),
+                  padding: const EdgeInsets.all(8),
+                  child: Text(widget.loginButtonText)),
             ),
           ),
         ],

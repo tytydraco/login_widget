@@ -5,14 +5,18 @@ import 'package:login_widget/login_widget.dart';
 class LoginFieldWidget extends StatefulWidget {
   /// The [TextEditingController] to assign this field to.
   final TextEditingController controller;
+
   /// An optional function to check whether the input string is valid or not.
   ///
   /// Should return the error message, or null if the input is accepted.
   final String? Function(String? input)? validator;
+
   /// The hint text to show when no input is given.
   final String hintText;
+
   /// Hides the input from the user.
   final bool obscureText;
+
   /// Automatically focus on this element when the widget is rendered.
   final bool autofocus;
 
@@ -35,16 +39,15 @@ class _LoginFieldWidgetState extends State<LoginFieldWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
       child: TextFormField(
-        autofocus: widget.autofocus,
-        controller: widget.controller,
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          border: const OutlineInputBorder(),
-        ),
-        obscureText: widget.obscureText,
-        textInputAction: TextInputAction.next,
-        validator: widget.validator
-      ),
+          autofocus: widget.autofocus,
+          controller: widget.controller,
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            border: const OutlineInputBorder(),
+          ),
+          obscureText: widget.obscureText,
+          textInputAction: TextInputAction.next,
+          validator: widget.validator),
     );
   }
 }
