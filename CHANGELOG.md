@@ -1,3 +1,8 @@
+## 0.0.8
+
+* Fix long press not using internal method
+* Use proper syntax for private methods
+
 ## 0.0.7
 
 * Add error message support by returning String from callbacks

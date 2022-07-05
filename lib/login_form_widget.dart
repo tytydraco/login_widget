@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_widget/login_field_widget.dart';
 
-/// Form to hold a list of [LoginFieldWidget].
-class LoginFormWidget extends StatefulWidget {
+class LoginFormWidget extends StatelessWidget {
   /// A [GlobalKey] of type [FormState] to use.
   final GlobalKey<FormState> formKey;
 
@@ -16,16 +15,11 @@ class LoginFormWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<LoginFormWidget> createState() => _LoginFormWidgetState();
-}
-
-class _LoginFormWidgetState extends State<LoginFormWidget> {
-  @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.formKey,
+      key: formKey,
       child: Column(
-        children: widget.loginFields,
+        children: loginFields,
       ),
     );
   }

@@ -39,74 +39,74 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  bool isLoading = false;
-  String? errorMessage;
+  bool _isLoading = false;
+  String? _errorMessage;
 
   /// Sets the loading status if it is supported to [value].
   ///
   /// Also refreshes the state if applicable.
-  void setLoadingState(bool value) {
+  void _setLoadingState(bool value) {
     if (widget.showLoadingSpinner) {
-      setState(() => isLoading = value);
+      setState(() => _isLoading = value);
     }
   }
 
   /// Sets the error message if it has changed.
   ///
   /// Also refreshes the state.
-  void setErrorMessage(String? message) {
-    if (errorMessage != message) {
-      setState(() => errorMessage = message);
+  void _setErrorMessage(String? message) {
+    if (_errorMessage != message) {
+      setState(() => _errorMessage = message);
     }
   }
 
   /// Clears the error message.
   ///
   /// Also refreshes the state.
-  void clearErrorMessage() => setErrorMessage(null);
+  void _clearErrorMessage() => _setErrorMessage(null);
 
   /// If the input is valid, report a login attempt.
-  void submitLoginInfo() async {
-    clearErrorMessage();
+  void _submitLoginInfo() async {
+    _clearErrorMessage();
 
     if (widget.form.formKey.currentState!.validate()) {
-      setLoadingState(true);
+      _setLoadingState(true);
       final newErrorMessage = await widget.onSubmit();
-      setLoadingState(false);
-      setErrorMessage(newErrorMessage);
+      _setLoadingState(false);
+      _setErrorMessage(newErrorMessage);
     }
   }
 
   /// If the input is valid, report a long press attempt.
-  void submitLoginInfoLongPress() async {
-    clearErrorMessage();
+  void _submitLoginInfoLongPress() async {
+    _clearErrorMessage();
 
     if (widget.onLongPress == null) {
       return;
     }
 
     if (widget.form.formKey.currentState!.validate()) {
-      setLoadingState(true);
+      _setLoadingState(true);
       final newErrorMessage = await widget.onLongPress!();
-      setLoadingState(false);
-      setErrorMessage(newErrorMessage);
+      _setLoadingState(false);
+      _setErrorMessage(newErrorMessage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!isLoading) {
+    if (!_isLoading) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LoginErrorMessage(message: errorMessage),
+          LoginErrorMessage(message: _errorMessage),
           widget.form,
           Padding(
             padding: const EdgeInsets.all(8),
             child: ElevatedButton(
-              onPressed: submitLoginInfo,
-              onLongPress: widget.onLongPress,
+              onPressed: _submitLoginInfo,
+              onLongPress: _submitLoginInfoLongPress,
               child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Text(widget.loginButtonText)),

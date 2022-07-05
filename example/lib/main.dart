@@ -32,11 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final formKey = GlobalKey<FormState>();
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
-  String? genericValidator(String? input) {
+  String? _genericValidator(String? input) {
     if (input == null) {
       return 'Invalid';
     } else if (input == '') {
@@ -58,25 +58,25 @@ class _MyHomePageState extends State<MyHomePage> {
           constraints: const BoxConstraints(maxWidth: 300),
           child: LoginWidget(
             form: LoginFormWidget(
-              formKey: formKey,
+              formKey: _formKey,
               loginFields: [
                 LoginFieldWidget(
-                  controller: usernameController,
+                  controller: _usernameController,
                   hintText: 'Username',
-                  validator: genericValidator,
+                  validator: _genericValidator,
                 ),
                 LoginFieldWidget(
-                  controller: passwordController,
+                  controller: _passwordController,
                   hintText: 'Password',
                   obscureText: true,
-                  validator: genericValidator,
+                  validator: _genericValidator,
                 ),
               ],
             ),
             loginButtonText: 'Log in',
             onSubmit: () async {
               final text =
-                  '${usernameController.text} : ${passwordController.text}';
+                  '${_usernameController.text} : ${_passwordController.text}';
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(text)));
               return null;

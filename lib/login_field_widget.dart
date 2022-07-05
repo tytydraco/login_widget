@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_widget/login_widget.dart';
 
 /// Single text field for use with [LoginWidget].
-class LoginFieldWidget extends StatefulWidget {
+class LoginFieldWidget extends StatelessWidget {
   /// The [TextEditingController] to assign this field to.
   final TextEditingController controller;
 
@@ -30,24 +30,19 @@ class LoginFieldWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<LoginFieldWidget> createState() => _LoginFieldWidgetState();
-}
-
-class _LoginFieldWidgetState extends State<LoginFieldWidget> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: TextFormField(
-          autofocus: widget.autofocus,
-          controller: widget.controller,
+          autofocus: autofocus,
+          controller: controller,
           decoration: InputDecoration(
-            hintText: widget.hintText,
+            hintText: hintText,
             border: const OutlineInputBorder(),
           ),
-          obscureText: widget.obscureText,
+          obscureText: obscureText,
           textInputAction: TextInputAction.next,
-          validator: widget.validator),
+          validator: validator),
     );
   }
 }
