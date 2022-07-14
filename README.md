@@ -1,6 +1,6 @@
 # login_widget
 
-A portable and lightweight login widget
+A Flutter package capable of streamlining the construction of login forms.
 
 ## Features
 

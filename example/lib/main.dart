@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  /// Ensure the [input] is valid.
   String? _genericValidator(String? input) {
     if (input == null) {
       return 'Invalid';
@@ -75,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             loginButtonText: 'Log in',
             onSubmit: () async {
-              final text =
-                  '${_usernameController.text} : ${_passwordController.text}';
+              final text = '${_usernameController.text} : '
+                  '${_passwordController.text}';
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(text)));
               return null;

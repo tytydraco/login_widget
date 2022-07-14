@@ -51,18 +51,14 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
   }
 
-  /// Sets the error message if it has changed.
-  ///
-  /// Also refreshes the state.
+  /// Sets the error message if it has changed and refreshes the state.
   void _setErrorMessage(String? message) {
     if (_errorMessage != message) {
       setState(() => _errorMessage = message);
     }
   }
 
-  /// Clears the error message.
-  ///
-  /// Also refreshes the state.
+  /// Clears the error message and refreshes the state.
   void _clearErrorMessage() => _setErrorMessage(null);
 
   /// If the input is valid, report a login attempt.

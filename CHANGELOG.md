@@ -1,3 +1,9 @@
+## 1.0.0
+
+* Add tests
+* Format code
+* Rename GitHub repo
+
 ## 0.0.8
 
 * Fix long press not using internal method
