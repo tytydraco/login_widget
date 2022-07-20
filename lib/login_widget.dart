@@ -6,6 +6,16 @@ import 'package:login_widget/login_form_widget.dart';
 
 /// The root login widget to display.
 class LoginWidget extends StatefulWidget {
+  /// Create a new [LoginWidget] given a [form] and some [loginButtonText].
+  const LoginWidget({
+    super.key,
+    required this.form,
+    required this.loginButtonText,
+    this.onSubmit,
+    this.onLongPress,
+    this.showLoadingSpinner = false,
+  });
+
   /// A [LoginFormWidget] which holds all of the login fields.
   final LoginFormWidget form;
 
@@ -15,7 +25,7 @@ class LoginWidget extends StatefulWidget {
   /// Gets called when the user presses submit.
   ///
   /// Returns an error message, if applicable.
-  final FutureOr<String?> Function() onSubmit;
+  final FutureOr<String?> Function()? onSubmit;
 
   /// Gets called when the user long presses on the submit button.
   ///
@@ -24,15 +34,6 @@ class LoginWidget extends StatefulWidget {
 
   /// Shows a indefinite circular spinner awaiting [onSubmit] or [onLongPress].
   final bool showLoadingSpinner;
-
-  const LoginWidget({
-    Key? key,
-    required this.form,
-    required this.loginButtonText,
-    required this.onSubmit,
-    this.onLongPress,
-    this.showLoadingSpinner = false,
-  }) : super(key: key);
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -62,19 +63,23 @@ class _LoginWidgetState extends State<LoginWidget> {
   void _clearErrorMessage() => _setErrorMessage(null);
 
   /// If the input is valid, report a login attempt.
-  void _submitLoginInfo() async {
+  Future<void> _submitLoginInfo() async {
     _clearErrorMessage();
+
+    if (widget.onSubmit == null) {
+      return;
+    }
 
     if (widget.form.formKey.currentState!.validate()) {
       _setLoadingState(true);
-      final newErrorMessage = await widget.onSubmit();
+      final newErrorMessage = await widget.onSubmit!();
       _setLoadingState(false);
       _setErrorMessage(newErrorMessage);
     }
   }
 
   /// If the input is valid, report a long press attempt.
-  void _submitLoginInfoLongPress() async {
+  Future<void> _submitLoginInfoLongPress() async {
     _clearErrorMessage();
 
     if (widget.onLongPress == null) {
@@ -104,8 +109,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               onPressed: _submitLoginInfo,
               onLongPress: _submitLoginInfoLongPress,
               child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(widget.loginButtonText)),
+                padding: const EdgeInsets.all(8),
+                child: Text(widget.loginButtonText),
+              ),
             ),
           ),
         ],

@@ -3,6 +3,16 @@ import 'package:login_widget/login_widget.dart';
 
 /// Single text field for use with [LoginWidget].
 class LoginFieldWidget extends StatelessWidget {
+  /// Create a new [LoginFieldWidget] given a [controller] to attach.
+  const LoginFieldWidget({
+    super.key,
+    required this.controller,
+    this.validator,
+    this.hintText = '',
+    this.obscureText = false,
+    this.autofocus = false,
+  });
+
   /// The [TextEditingController] to assign this field to.
   final TextEditingController controller;
 
@@ -20,29 +30,21 @@ class LoginFieldWidget extends StatelessWidget {
   /// Automatically focus on this element when the widget is rendered.
   final bool autofocus;
 
-  const LoginFieldWidget({
-    Key? key,
-    required this.controller,
-    this.validator,
-    this.hintText = '',
-    this.obscureText = false,
-    this.autofocus = false,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: TextFormField(
-          autofocus: autofocus,
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: const OutlineInputBorder(),
-          ),
-          obscureText: obscureText,
-          textInputAction: TextInputAction.next,
-          validator: validator),
+        autofocus: autofocus,
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          border: const OutlineInputBorder(),
+        ),
+        obscureText: obscureText,
+        textInputAction: TextInputAction.next,
+        validator: validator,
+      ),
     );
   }
 }

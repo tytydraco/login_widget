@@ -5,18 +5,30 @@ import 'package:login_widget/login_error_message.dart';
 void main() {
   group('Login error message', () {
     testWidgets('Message provided', (widgetTester) async {
-      await widgetTester.pumpWidget(const MaterialApp(
-          home: Material(child: LoginErrorMessage(message: 'Example error'))));
+      await widgetTester.pumpWidget(
+        const MaterialApp(
+          home: Material(child: LoginErrorMessage(message: 'Example error')),
+        ),
+      );
 
       expect(find.text('Example error'), findsOneWidget);
     });
 
     testWidgets('Message not provided', (widgetTester) async {
-      const nullErrorMessage = LoginErrorMessage(message: null);
       await widgetTester.pumpWidget(
-          const MaterialApp(home: Material(child: nullErrorMessage)));
+        const MaterialApp(
+          home: Material(
+            child: LoginErrorMessage(message: null),
+          ),
+        ),
+      );
 
-      expect(find.byWidget(nullErrorMessage), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (widget) => widget is Visibility && !widget.visible,
+        ),
+        findsOneWidget,
+      );
     });
   });
 }

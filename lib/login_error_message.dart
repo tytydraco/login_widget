@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 /// Display a [Text] with a [message] (if [message] is not null).
 class LoginErrorMessage extends StatelessWidget {
+  /// Create a new [LoginErrorMessage] with the given [message].
+  const LoginErrorMessage({
+    super.key,
+    required this.message,
+  });
+
   /// The optional text to display.
   final String? message;
-
-  const LoginErrorMessage({
-    Key? key,
-    required this.message,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class LoginErrorMessage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: Text(
-          message ?? "",
+          message ?? '',
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.red,

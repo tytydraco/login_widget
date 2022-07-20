@@ -1,3 +1,9 @@
+## 1.0.1
+
+* Follow Very Good Analysis guidelines
+* Make onSubmit optional
+* Significantly improve tests
+
 ## 1.0.0
 
 * Add tests
