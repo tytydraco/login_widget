@@ -101,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LoginErrorMessage(message: _errorMessage),
+          LoginErrorMessage(_errorMessage),
           widget.form,
           Padding(
             padding: const EdgeInsets.all(8),

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 /// Display a [Text] with a [message] (if [message] is not null).
 class LoginErrorMessage extends StatelessWidget {
   /// Create a new [LoginErrorMessage] with the given [message].
-  const LoginErrorMessage({
+  const LoginErrorMessage(
+    this.message, {
     super.key,
-    required this.message,
   });
 
   /// The optional text to display.

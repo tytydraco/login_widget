@@ -7,7 +7,7 @@ void main() {
     testWidgets('Message provided', (widgetTester) async {
       await widgetTester.pumpWidget(
         const MaterialApp(
-          home: Material(child: LoginErrorMessage(message: 'Example error')),
+          home: Material(child: LoginErrorMessage('Example error')),
         ),
       );
 
@@ -18,7 +18,7 @@ void main() {
       await widgetTester.pumpWidget(
         const MaterialApp(
           home: Material(
-            child: LoginErrorMessage(message: null),
+            child: LoginErrorMessage(null),
           ),
         ),
       );
