@@ -1,3 +1,7 @@
+## 1.0.2+1
+
+* Convert LICENSE to 2-Clause BSD
+
 ## 1.0.2
 
 * Use positional parameters when applicable
