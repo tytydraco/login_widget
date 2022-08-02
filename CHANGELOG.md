@@ -1,6 +1,7 @@
 ## 1.0.3
 
 * Fix lib structure
+* Use material design
 
 ## 1.0.2+1
 
