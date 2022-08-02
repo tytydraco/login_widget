@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:login_widget/login_error_message.dart';
+import 'package:login_widget/login_widget.dart';
 
 void main() {
   group('Login error message', () {

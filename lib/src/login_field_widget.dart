@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/login_widget.dart';
+import 'package:login_widget/src/login_widget.dart';
 
 /// Single text field for use with [LoginWidget].
 class LoginFieldWidget extends StatelessWidget {

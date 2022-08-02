@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix lib structure
+
 ## 1.0.2+1
 
 * Convert LICENSE to 2-Clause BSD

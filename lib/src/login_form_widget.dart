@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_widget/login_field_widget.dart';
+import 'package:login_widget/src/login_field_widget.dart';
 
 /// Holds a list of [loginFields] in a [Form] given a [formKey] to use.
 class LoginFormWidget extends StatelessWidget {

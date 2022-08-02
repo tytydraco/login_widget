@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:login_widget/login_field_widget.dart';
-import 'package:login_widget/login_form_widget.dart';
 import 'package:login_widget/login_widget.dart';
 
 void main() {
